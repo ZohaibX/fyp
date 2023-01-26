@@ -1,0 +1,21 @@
+remove node-sass when in docker work
+"node-sass": "7.0.1",
+
+conversion btw docker and local machine 
+config > keys -> http://localhost:3000 and http://localhost:5000 into http://fyp.com
+
+
+server > .env -> PORT HOST=3000 for docker -- 5000 for local
+FRONTEND=http://fyp.com during skaffold -- localhost:3000 for local
+
+
+
+
+
+
+
+CREATE TEST DATA 
+ http://localhost/api/ads/create-test-ads
+ GET 
+
+ Users must be IN

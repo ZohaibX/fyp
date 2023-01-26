@@ -1,0 +1,3 @@
+need to change s3_bucket cors allowed origins for production mode 
+need to change email conf from sendgrid 
+need to facebook passport conf for mobile frontend

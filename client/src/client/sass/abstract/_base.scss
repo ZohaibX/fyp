@@ -1,0 +1,31 @@
+@import "./mixins";
+@import "./variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%; // 1rem = 10px,  10/16px = 62.5
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 400;
+    // background-image: linear-gradient(to right, $primary-light, $primary-dark);
+    // line-height: 1.6;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+
+    min-height: 100vh; // it means if its content get bigger than full view port height .. then height will also become bigger
+    color: $gray-dark-2;
+
+    @include respond(1100) {
+        font-size: 50%; // 8px/16px
+    }
+}
+
+// when er select some text
+::selection {
+    // background-color: $color-primary;
+    // color: $color-white;
+}

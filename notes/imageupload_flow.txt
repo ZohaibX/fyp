@@ -1,0 +1,12 @@
+Flow of image upload
+
+normal way to do this is to send the image file to server and server will post the image to s3 
+but it will be consuming good amount of CPU in server -- for every image it uploads 
+
+So, what we are doing is to 
+send request to the server with file name and type 
+server will ask s3 for a presigned url 
+server will give a url containing encoded file name and type 
+server will send the url back to client 
+client will directly upload that image to s3 with that url 
+!! then, after success, client will send the url to server -- so server can save the url  

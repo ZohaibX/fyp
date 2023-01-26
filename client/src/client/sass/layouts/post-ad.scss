@@ -1,0 +1,92 @@
+@import '../abstract/mixins';
+
+.form-post {
+  width: 60% !important;
+  margin: 0 auto;
+}
+
+.ad-title {
+  width: 100% !important;
+}
+
+#search-box-post {
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  margin-left: -1.2rem !important;
+
+  @include respond(1100) {
+    flex-direction: column;
+  }
+}
+
+#location-box-post {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  @include respond(1100) {
+    flex-direction: column;
+  }
+}
+.contact-number {
+  width: 30% !important;
+  @include respond(1100) {
+    width: 70% !important;
+  }
+}
+.location-details {
+  width: 30% !important;
+  @include respond(1100) {
+    width: 70% !important;
+  }
+}
+.city {
+  width: 30% !important;
+  @include respond(1100) {
+    width: 70% !important;
+  }
+}
+.gender {
+  width: 40% !important;
+  @include respond(1100) {
+    width: 70% !important;
+  }
+}
+.age {
+  width: 40% !important;
+  @include respond(1100) {
+    width: 70% !important;
+  }
+}
+
+.upload {
+  width: 40% !important;
+  @include respond(1100) {
+    width: 80% !important;
+  }
+}
+
+.post-select {
+  @include respond(1100) {
+    width: 60% !important;
+  }
+}
+
+.post-flex-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include respond(tab-land) {
+    flex-direction: column;
+  }
+}
+
+#species-select {
+  &-1 {
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center;
+  }
+}

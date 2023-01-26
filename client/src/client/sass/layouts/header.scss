@@ -1,0 +1,117 @@
+@import '../abstract/mixins';
+
+#header {
+    height: 6rem !important;
+    font-family: 'Josefin Sans' !important;
+    // letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 2rem;
+
+    @include respond(750) {
+        height: 6rem !important;
+    }
+    @include respond(phone-md) {
+        height: 5rem !important;
+    }
+}
+
+.navbar_brand {
+    @include respond(tab-land) {
+        width: 100%;
+        text-align: center;
+    }
+
+    &_link {
+        @include respond(tab-land) {
+            margin: 0 auto;
+        }
+    }
+    @include respond(phone-md) {
+        font-family: 'lobster';
+        font-size: '40px';
+        color: 'white';
+        font-style: 'none';
+        text-decoration: 'none';
+    }
+
+    &_image {
+        margin-top: -5px !important;
+        @include respond(phone-md) {
+            width: 250px;
+            margin-top: 5px !important;
+        }
+    }
+}
+
+.sidebar_button {
+    display: none !important;
+    @include respond(tab-land) {
+        display: contents !important;
+        margin-left: 100rem !important;
+    }
+    @include respond(phone) {
+        display: none !important;
+    }
+}
+.sidebar_button_2 {
+    display: none !important;
+
+    @include respond(phone) {
+        display: contents !important;
+    }
+}
+
+#responsive-navbar-nav {
+    @include respond(tab-land) {
+        display: none !important;
+    }
+}
+
+.side-bar-hidden {
+    display: none !important;
+}
+
+#dropdown-item-button {
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+    border: none !important;
+    font-family: 'Josefin Sans';
+    font-size: 1.3rem;
+    color: white;
+    font-weight: bold;
+    font-style: none;
+    text-decoration: none;
+    outline: none !important;
+}
+.btn:active {
+    outline: none !important;
+    border: none !important;
+    text-decoration: none;
+}
+
+.btn:focus {
+    outline: none !important;
+    border: none !important;
+    text-decoration: none;
+}
+button:focus:not(:focus-visible) {
+    outline: none !important;
+}
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    //  box-shadow: 0 0 0 0.25rem rgb(49 132 253 / 50%);
+    box-shadow: none !important;
+}
+.btn-check:focus + .btn,
+.btn:focus {
+    /* outline: 0; */
+    // box-shadow: 0 0 0 .25remrgba(13,110,253,.25);
+    outline: none !important;
+    box-shadow: none !important;
+}
+.dropdown-menu show {
+    background: #000 !important;
+}

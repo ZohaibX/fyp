@@ -1,0 +1,65 @@
+@import '../abstract/mixins';
+
+.avatar {
+  // margin-top: 5rem !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+.avatar-1 {
+  text-align: center !important ;
+  margin: 0 auto !important;
+  background-color: orangered;
+  height: 10rem;
+  width: 10rem;
+  position: relative;
+  // padding-top: 2rem !important;
+}
+
+.avatar-text {
+  font-size: 5rem;
+}
+
+.details-1 {
+  display: flex;
+  justify-content: start;
+  margin-left: 3rem;
+}
+
+.popUp {
+  width: 3.5rem;
+  height: 2.5rem;
+  margin-left: 2rem;
+  padding-bottom: 0.4rem !important;
+  background-color: none !important;
+  text-decoration: underline !important;
+  color: #007fff !important;
+}
+
+.popup-password-button {
+  width: 40% !important;
+  height: 3rem !important;
+  background-color: #318ce7 !important ;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bolder !important;
+  color: white !important;
+  font-size: 1.1rem !important;
+}
+
+.profile-image-box {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+.profile-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.edit-profile-pic {
+  position: absolute;
+  top: -0.3rem;
+  left: 9rem;
+}

@@ -1,0 +1,167 @@
+@import '../abstract/mixins';
+
+.comments-section {
+    margin-top: 2.5rem !important;
+    // position: relative;
+}
+
+.link-query {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.query {
+    position: relative;
+
+    margin: 0 auto;
+
+    border: 1px solid;
+    border-color: black;
+    border-radius: 5px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+
+    &:hover {
+        // background-color: #f5f5dc;
+        // cursor: pointer;
+        // transition: background-color 0.3s ease-out;
+    }
+
+    &-h5 {
+        text-transform: capitalize;
+        width: 100%;
+        text-align: center !important;
+        margin: 0 auto !important;
+        margin-bottom: 0.5rem;
+
+        margin-top: -0.5rem;
+    }
+
+    &-bird-details {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: start;
+
+        position: absolute;
+        top: 0.3rem;
+
+        @include respond(1000) {
+            display: block;
+            position: static;
+            width: fit-content;
+            margin-top: 0.5rem;
+        }
+
+        h6 {
+            border-bottom: 1px solid;
+            border-color: black;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+            padding-left: 0.3rem;
+            padding-right: 0.3rem;
+            box-shadow: 1px black;
+            font-weight: bolder;
+        }
+    }
+
+    &-user-info {
+        position: absolute;
+
+        top: 0.3rem;
+        left: 80%;
+        text-align: justify;
+
+        border-bottom: 1px solid;
+        border-top: 1px solid;
+        border-color: #1e90ff;
+        padding-top: 0.1rem;
+        padding-bottom: 0.1rem;
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+        box-shadow: 1px black;
+        color: #1e90ff;
+
+        @include respond(phone-md) {
+            left: 1rem;
+        }
+    }
+
+    &-paragraph {
+        margin-top: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    &-reply {
+        font-size: 0.9rem !important;
+        text-align: justify;
+
+        &-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            font-size: 0.8rem;
+            p {
+                text-transform: capitalize;
+                color: #1e90ff;
+                margin-top: -0.8rem;
+
+                border-bottom: 1px solid black;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.send-reply {
+    margin-top: -1rem !important;
+    width: 100%;
+}
+.send-icon {
+    color: #1e90ff;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.search-comments {
+    position: absolute;
+    top: 100px;
+
+    @include respond(tab-port) {
+        position: static;
+        width: 40%;
+        margin-top: -2rem;
+    }
+
+    @include respond(phone-md) {
+        position: static;
+        width: 60%;
+        margin-top: 0.3rem;
+    }
+}
+
+#query-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+
+    @include respond(1100) {
+        display: block;
+        margin-left: 25%;
+    }
+    @include respond(phone-md) {
+        display: block;
+        margin-left: 20%;
+    }
+}

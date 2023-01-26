@@ -1,0 +1,77 @@
+create s3 bucket {us-east-1} is working fine btw
+
+open iam on other tab 
+policies 
+create a policy
+visual editor 
+service -> s3
+actions -> All Actions 
+resources -> click -> specific -> bucket - Add Arn -> enter name of bucket 
+                                  object - Add Arn -> enter name of bucket AND any for object name 
+review policy and create
+
+now create iam user and programmatic access
+IAM user's Permissions
+add Permissions
+add policy we created 
+add built in policy "AmazonS3FullAccess" for now, to make it work -- {I FACED A FUCKING BIG ERROR WITHOUT THIS POLICY ADDED ON MY IAM USER}
+
+on S3 Bucket Permissions 
+- it should be a public access -- uncheck block public accesses 
+
+Bucket policy
+go to edit and i could generate my own policy or copy paste from here 
+[CHANGE_BUCKET_NAME_HERE]
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1616259705897",
+    "Statement": [
+        {
+            "Sid": "Stmt1616259703206",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectAcl"
+            ],
+            "Resource": "arn:aws:s3:::BUCKET_NAME/*"
+        }
+    ]
+}
+
+Cors --> {allowed origins should be checked}
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [],
+        "MaxAgeSeconds": 3000
+    },
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "PUT",
+            "POST",
+            "DELETE"
+        ],
+        "AllowedOrigins": [
+            "https://ticketing.dev"
+        ],
+        "ExposeHeaders": [
+            "x-amz-server-side-encryption",
+            "x-amz-request-id",
+            "x-amz-id-2",
+            "ETag"
+        ],
+        "MaxAgeSeconds": 3000
+    }
+]

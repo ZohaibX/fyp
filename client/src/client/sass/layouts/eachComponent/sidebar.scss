@@ -1,0 +1,126 @@
+@import "../../abstract/variables";
+@import "../../abstract/mixins";
+
+// main sidebar
+.sidebar {
+    background-color: $gray-dark-1;
+
+    flex: 0 0 18%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+// side nav 
+.side-nav {
+    font-size: .8rem;
+    list-style: none;
+    margin-top: 3rem;
+    width: 100%;
+
+    @include respond(tab-land) {
+        display: flex; // to display side by side ..
+        margin: 0;
+    }
+
+    // Hover effect of the pink color
+    &__item {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+
+            @include respond(tab-land) {
+                margin-bottom: 0;
+            }
+        }
+
+        @include respond(tab-land) {
+            flex: 1; // so every one will occupy possible space -- same space
+        }
+
+        // this is a pink line -- that appears on hover -- its just a line of width 3px which becomes 100% on hover
+        // it is scaled to be 0 so it can only appear on hover
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%; // 100% of the item
+            width: 3px;
+            background-color: $primary;
+            transform: scale(0); // we'll convert it to 1 in hover .
+            transform-origin: center; // transform will start from center ..
+            transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s;
+            // cubic bezier is a website too -- for transition timing functions
+            // 0.2s is a delay for width transition until transform transition completes
+            // we had to put two transitions bcoz we will have same effect otherwise // which was rising from the center
+        }
+
+        &:hover::before,
+        &--active::before {
+            transform: scaleY(1); // its scale Y only
+            width: 100%; // for x axis 
+        }
+
+        &:active::before {
+            background-color: $primary-light;
+        }
+    }
+
+    // setting every link which contains an icon and text
+    &__link {
+        color: $gray-light-1;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block;
+        padding: 1rem 2rem;
+
+        display: flex;
+        align-items: center; // to align icon property and text property
+
+        // z-index only works when position is specified
+        position: relative;
+        z-index: 10; // for this item to be on top of the pseudo-element::before 
+
+        @include respond(tab-land) {
+            justify-content: center;
+            padding: 1.2rem;
+        }
+
+        @include respond(750) {
+            flex-direction: column;
+            padding: .6rem .2rem;
+        }
+
+    }
+
+    &__icon {
+        height: 1.2rem;
+        width: 1.2rem;
+        margin-right: 1rem;
+        fill: currentColor; // current colour will use element's parent color
+
+        @include respond(750) {
+            margin-right: 0; // to center the icon in 750
+            margin-bottom: .3rem;
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+}
+
+
+// Legal Text
+.legal-text {
+    font-size: .6rem;
+    color: $gray-light-4;
+    text-align: center;
+    padding: 2.5rem;
+
+    @include respond(tab-land) {
+        display: none;
+    }
+}

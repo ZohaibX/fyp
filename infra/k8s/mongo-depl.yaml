@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-mongo
+  template:
+    metadata:
+      labels:
+        app: server-mongo
+    spec:
+      volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: server-pvc
+      containers:
+        - name: server-mongo
+          image: mongo:latest
+          volumeMounts:
+            - name: mongo-storage
+              mountPath: /data/db #!! this path must be same for mongodb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-mongo-srv
+spec:
+  selector:
+    app: server-mongo
+  ports:
+    - name: server-db
+      protocol: TCP
+      port: 27017 # default port for mongodb
+      targetPort: 27017
+# spec section is requirement for the storage by k8s to local hard disk
+# but in production environment, we have to define which service we wanna use to get cloud storage
+# but that service will automatically be configured by the cloud provider where we will host our app
+

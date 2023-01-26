@@ -1,0 +1,48 @@
+@import ".././abstract/variables";
+@import ".././abstract/mixins";
+
+.container {
+    max-width: 85rem; // xyada se xyada itni width
+    margin: 8rem auto; // to position the container
+    background-color: $gray-light-2;
+    box-shadow: $shadow-dark;
+
+    // min-height: 60rem; // for testing purpose
+
+    @include respond(tab-land) {
+        margin: 0; // to cover the full screen 
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+// Header
+@import "./eachComponent/header.scss";
+
+//  Main -- container of sidebar and hotel view
+.content {
+    display: flex;
+
+    @include respond(tab-land) {
+        flex-direction: column;
+    }
+}
+
+// Sidebar
+@import "./eachComponent/sidebar.scss";
+
+.hotel-view {
+    // test purpose
+    // height: 60rem;
+
+    flex: 1;
+}
+
+// Hotel Overview
+@import "./eachComponent/overview.scss";
+
+// Details -- 
+@import "./eachComponent/details.scss";
+
+// CTA -- 
+@import "./eachComponent/cta.scss";

@@ -1,0 +1,193 @@
+@import "../../abstract/variables";
+@import "../../abstract/mixins";
+
+
+.details {
+    font-size: .7rem;
+    display: flex;
+    padding: 3rem; // padding applies to the whole details section --
+    background-color: $gray-light-1;
+    border-bottom: 1px solid $gray-light-2;
+
+    @include respond(tab-land) {
+        // its 1200
+        padding: 2.2rem;
+    }
+
+    @include respond(750) {
+        flex-direction: column;
+    }
+}
+
+//                                      left side
+.description {
+    background-color: #fff;
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, .06);
+    padding: 2.2rem;
+
+    flex: 0 0 60%; // take 60% of the whole width
+    margin-right: 2.8rem;
+
+    @include respond(tab-land) {
+        padding: 1.5rem;
+        margin-right: 2rem;
+    }
+
+    @include respond(750) {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    // 2 Paragraphs
+    &__paragraph {
+        &:not(:last-of-type) {
+            // not last child but type
+            margin-bottom: 1.2rem;
+        }
+    }
+
+    // List Items
+    &__list {
+        list-style: none;
+        margin: 2.2rem 0;
+        padding: 2.2rem 0;
+        border-top: 1px solid $gray-light-2;
+        border-bottom: 1px solid $gray-light-2;
+
+        display: flex; // to make them side by side ..
+        flex-wrap: wrap; // so its content will move to next line if it cannot be side by side -- content will go to the new lines
+
+        &__item {
+            flex: 0 0 50%; // so every item will have 50% of width
+            margin-bottom: .3rem;
+
+            display: flex; // to make &__photo and its text aligned
+            align-items: center;
+
+            &__photo {
+                display: inline-block;
+                height: .5rem;
+                width: .5rem;
+                margin-right: .4rem;
+                color: $primary;
+            }
+        }
+    }
+
+    // Recommendations ..
+    &__recommendation {
+
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+
+        &__count {
+            margin-right: auto; // so it will cover all the space from its right -- with its own margin
+        }
+
+        &__friends {
+
+            @include respond(tab-land) {
+                display: flex; // so pics remain side by side -- always
+            }
+
+            &__photo {
+                height: 2.8rem;
+                width: 2.8rem;
+                border-radius: 50%;
+                border: 3px solid #fff;
+                // when we add a border on the image -- border appears within actual image so that actual image shrinks
+                // so to handle this problem -- we have two ways 
+                // 1st is -- we add 3px of border in height and width -- 2nd one is right below
+                box-sizing: content-box;
+
+                &:not(:last-child) {
+                    margin-right: -.6rem;
+                }
+            }
+        }
+    }
+}
+
+
+//                                           right side
+.user-reviews {
+    flex: 1; // will cover all the remaining space
+
+    // to align all its children to center
+    display: flex;
+    flex-direction: column;
+    align-items: center; // so now align items will work for main/x axis bcoz flex direction is column now
+}
+
+.review {
+
+    background-color: #fff;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    padding: 2.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden; // in the case if content of it is overflowing
+
+    @include respond(tab-land) {
+        padding: 1.6rem;
+        margin: 1.2rem;
+    }
+
+    // quotation mark 
+    &::before {
+        // the way how to use special html code entity in css directly
+        content: "\201C"; // special html code entity -- from a website -- i have in my resources ... 
+        line-height: 1; // it is necessary to do in html entities --
+        font-family: sans-serif; // it inherits parent's ff -- so we set it manually to default browser's ff
+        position: absolute;
+        font-size: 13rem;
+        top: -1.6rem;
+        left: -.6rem;
+        color: $gray-light-2;
+        z-index: 1; // so we can apply higher z-index on the text -- &__text
+    }
+
+    &__text {
+        margin-bottom: 1.2rem;
+        z-index: 10;
+        position: relative; // z-index only works when we have position specified
+    }
+
+    // user info
+    &__user {
+
+        display: flex;
+        align-items: center;
+
+        &__photo {
+            height: 3.7rem;
+            width: 3.7rem;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        &__user-box {
+
+            margin-right: auto; // will occupy all the space from right
+
+            &__username {
+                font-size: .6rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-bottom: .2rem;
+            }
+
+            &__date {
+                font-size: .5rem;
+                color: $gray-dark-3;
+            }
+        }
+
+        &__rating {
+            color: $primary;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+    }
+}

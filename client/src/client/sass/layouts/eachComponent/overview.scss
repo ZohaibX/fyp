@@ -1,0 +1,163 @@
+@import "../../abstract/variables";
+@import "../../abstract/mixins";
+
+
+// Gallery section starts 
+.gallery {
+    display: flex;
+
+    &__photo {
+        width: 100%;
+        display: block; // so we can get rid of white space in inline or inline-block
+
+        // in compare of this method -- 
+        // we could use width 33.333% and then float left and use clearfix and it would have same effect as it is
+    }
+}
+
+// Gallery section ends
+
+
+// Overview area starts
+.overview {
+    display: flex;
+    border-bottom: 1px solid $gray-light-3;
+    align-items: center;
+    backface-visibility: hidden;
+
+    // heading
+    &__heading {
+        font-size: 1.4rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 0.7rem 2.2rem;
+        color: $gray-dark-3;
+
+        @include respond(750) {
+            font-size: .8rem;
+            padding: .3rem 1.5rem;
+        }
+    }
+
+    // stars .
+    &__stars {
+        // flex: 1; ;
+        margin-right: auto;
+
+        display: flex; // bcoz svg icons have some padding from inline elements -- so we can control them this way
+    }
+
+    &__icon-star {
+        width: 1rem;
+        height: 1rem;
+        color: $primary; // i dont know y but fill is not working here 
+    }
+
+    // location
+    &__location {
+        display: flex; // q k btn thora neeche chala gaya tha -- align kiya usko
+        font-size: .7rem;
+    }
+
+    &__icon-location {
+        width: 1rem;
+        height: 1rem;
+        color: $primary; // i dont know y but fill is not working here 
+        margin-right: .3rem;
+    }
+
+    // rating
+    &__rating {
+
+        background-color: $primary;
+        color: #fff;
+        margin-left: 2.2rem;
+        padding: .4rem 1.7rem;
+        align-self: stretch; // for the case to cover full height
+
+        // to align vertically and horizontally
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // to have as a column .
+        flex-direction: column;
+
+        @include respond(750) {
+            padding: .1rem 1rem;
+        }
+
+        &-average {
+            font-size: 1.7rem;
+            font-weight: 300;
+            // margin-bottom: -3px;
+
+            @include respond(750) {
+                font-size: 1.2rem;
+            }
+        }
+
+        &-count {
+            font-size: .5rem;
+            text-transform: uppercase;
+
+            @include respond(750) {
+                font-size: .2rem;
+            }
+        }
+    }
+}
+
+.button-inline {
+    border: none;
+    color: $primary;
+    font-size: inherit; // will inherit from its parent
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s;
+    backface-visibility: hidden;
+
+    & span {
+        margin-left: 3px;
+        transition: margin-left .2s; // bcz hum ne all ooper he bataa diya hai -- baar baar nahi krna 
+    }
+
+    &:hover {
+        color: $gray-dark-1;
+
+        span {
+            margin-left: 8px;
+        }
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s linear; // i could make it as adding infinite after 1s but its having some problem with text when scaling -- so i removed infinite
+    }
+}
+
+// keyframe for button focus animation
+@keyframes pulsate {
+    0% {
+        -webkit-transform: scale(1);
+        box-shadow: none;
+    }
+
+    50% {
+        -webkit-transform: scale(1.1);
+        // there is having some problem in scaling text -- so i didn't scaled it
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, .25);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        box-shadow: none;
+    }
+}
+
+
+// Overview area ends

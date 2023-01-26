@@ -1,0 +1,35 @@
+#? Basic commands must be executed from the website
+apiVersion: extensions/v1beta1 # this apiVersion is expired but this is the only one working
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: goldlacpaints.online
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: auth-service # actual service file name
+              servicePort: 3000 # actual service file port
+          - path: /api/tickets/?(.*)
+            backend:
+              serviceName: tickets-service # actual service file name
+              servicePort: 3000 # actual service file port
+          - path: /api/orders/?(.*)
+            backend:
+              serviceName: orders-service # actual service file name
+              servicePort: 3000 # actual service file port
+          - path: /api/payments/?(.*)
+            backend:
+              serviceName: payments-service # actual service file name
+              servicePort: 3000 # actual service file port
+          - path: /?(.*) #! this service must b at the bottom of all - bcoz if some request comes for /api/user -- it will directly go to this service
+            backend:
+              serviceName: client-srv # actual service file name
+              servicePort: 3000 # actual service file port
+
+# there should be some changes made -- acc to the dev ingress-srv file

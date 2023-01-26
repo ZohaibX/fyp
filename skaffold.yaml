@@ -1,0 +1,37 @@
+# this file will watch k8s for changes -- and will see every service file for changes
+# no need to do kubectl apply -f k8s again and again
+
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/* # it will watch k8s for changes
+      - ./infra/k8s-dev/* # it will watch k8s for changes
+build:
+  local:
+    push: false # every container we build will not be automatically deployed to dockerhub
+  artifacts:
+    - image: 03004968719/project-server
+      context: server # path to the folder
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js' # every ts file in the src folder #? look style of this file
+            dest: . # for putting the changes in the container
+    - image: 03004968719/project-client
+      context: client # path to the folder
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'public/**/*.css'
+            dest: . # for putting the changes in the container
+          - src: '**/*.scss'
+            dest: .
+          - src: '**/*.tsx'
+            dest: . # for putting the changes in the container
+          - src: '**/*.jsx'
+            dest: . # for putting the changes in the container
+

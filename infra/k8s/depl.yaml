@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: server
+          image: 03004968719/project-server # this image is only built and not deployed
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://server-mongo-srv:27017/server'
+              #! we first need to have mongo-depl.yaml to make this work, its own db
+              # in a k8s env, it is not an issue to hard coat this mongo uri because to access this,
+              # someone would have to enter into the k8s cluster with my email account
+              # but i can still use it as a secret
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+# service config
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-service
+spec:
+  # default type is cluster-ip-service
+  selector:
+    app: server
+  ports:
+    - name: server
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

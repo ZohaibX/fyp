@@ -1,0 +1,58 @@
+@keyframes moveInLeft {
+
+    /* moveInLeft is a variable name -- so can be used anywhere */
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+        /* on the left  */
+    }
+
+    80% {
+        transform: translateX(1rem);
+        /* before 100% on main position -- we want it to go 10px further right and then , come back */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        /*  at 0 ... it will be at the main position */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+        /* on the right  */
+    }
+
+    80% {
+        transform: translateX(-1rem);
+        /* before 100% on main position -- we want it to go -10px further left and then , come back */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        /*  at 0 ... it will be at the main position */
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(10rem);
+        /* on the right  */
+    }
+
+    80% {
+        transform: translateY(-1rem);
+        /* before 100% on main position -- we want it to go -10px further left and then , come back */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /*  at 0 ... it will be at the main position */
+    }
+}

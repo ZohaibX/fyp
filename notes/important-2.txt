@@ -1,0 +1,4 @@
+add all the .env variables in kubernetes cluster as secrets 
+
+
+update all the localhost:3000 localhost:5000 as http://fyp.com

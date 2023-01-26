@@ -1,0 +1,33 @@
+#? Basic commands must be executed from the website
+apiVersion: networking.k8s.io/v1 # this apiVersion is expired but this is the only one working
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /api/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: server-service
+                port:
+                  number: 3000
+          - path: /?(.*) # idk but ssr is not leaving this exact route
+            pathType: Prefix
+            backend:
+              service:
+                name: client-service
+                port:
+                  number: 3000
+            # - path: /?(.*) #! this service must b at the bottom of all - bcoz if some request comes for /api/user -- it will directly go to this service
+            #   backend:
+            #     serviceName: client-srv # actual service file name
+            #     servicePort: 3000 # actual service file port
+
+            #! Only one of the client-srv could hold /?(.*) path

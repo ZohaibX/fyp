@@ -1,0 +1,179 @@
+@import '../../abstract/variables';
+@import '../../abstract/mixins';
+
+// Header Is Starting Here
+
+.header {
+    height: 15% !important; // so we describe height of header or navbar ..
+    background-color: #fff;
+    border-bottom: 1px solid $gray-light-2;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include respond(phone) {
+        flex-wrap: wrap;
+        height: 8rem;
+        align-content: space-around; // space around on y axis
+    }
+}
+
+.logo {
+    height: 3.25rem;
+    margin-left: 2rem;
+}
+
+//                                      Search Box Starts
+.search {
+    flex: 0 0 40%;
+
+    display: flex; /// we displayed it as flex to center its items
+    // otherwise i had to use transform: translateY(2px); at &__button
+    align-items: center;
+    justify-content: center;
+
+    @include respond(phone) {
+        order: 1; // right most .. and we have a flex wrap in parent -- so it can move to next line
+        flex: 0 0 100%; // 100% of the space it can occupy when logo and navigation also exists -- not on the same line -- but its a same flex
+        // and remember -- its not a search input -- its a whole search block
+        background-color: $gray-light-2; // so have a same color as input field
+    }
+
+    // Input
+    &__input {
+        font-family: inherit;
+        font-size: 0.8rem;
+        // bcoz these two proerties have their own proerties in input field by default
+        color: inherit;
+        border: none;
+        padding: 0.7rem 0.5rem;
+        padding-left: 2rem; // to move the placeholder
+        background-color: $gray-light-2;
+        border-radius: 100px;
+
+        width: 80%; // 80% of 40% flex -- and in phone media query case -- its 80% of the 100% width
+        margin-right: -2.5rem; // take it to the magnify icon
+        // so that icon will be on the top of the input
+
+        transition: all 0.2s;
+
+        &:focus {
+            outline: none;
+            width: 90%;
+            background-color: $gray-light-3;
+        }
+
+        &::-webkit-input-placeholder {
+            font-weight: 100;
+            color: $gray-light-4;
+        }
+    }
+
+    &__input:focus + &__button {
+        background-color: $gray-light-3;
+    }
+
+    // Magnify icon container
+    &__button {
+        border: none;
+        background-color: $gray-light-2;
+        // transform: translateY(2px);
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: translateY(4px); // when it is clicked
+        }
+    }
+
+    // Magnify icon
+    &__icon {
+        height: 1rem;
+        width: 1rem;
+        fill: $gray-dark-3; // to color the icon
+    }
+}
+
+//                                          Search Box Ends
+
+//                                          NavList Starts
+.user-nav {
+    align-self: stretch;
+    // we put it before display flex because align self is used in a child element
+    // so this selector is a child of header ..
+    // stretch covers all the padding on y axis
+
+    display: flex;
+    align-items: center;
+
+    & > * {
+        // every direct child of user-nav
+        padding: 0 2rem;
+        cursor: pointer;
+
+        height: 100%;
+        // we specified height -- because we wanted to have  a full background when hover
+
+        @include respond(750) {
+            padding: 0 1rem;
+        }
+    }
+
+    & > *:hover {
+        background-color: $gray-light-2;
+    }
+
+    &__icon-box {
+        display: flex;
+        align-items: center; // to center -- bcoz there will be a problem when we specied 100% height
+
+        position: relative;
+    }
+
+    &__icon {
+        height: 1.3rem;
+        width: 1.3rem;
+        fill: $gray-dark-2;
+    }
+
+    &__notification {
+        font-size: 0.7rem;
+        height: 1.2rem;
+        width: 1.2rem;
+        border-radius: 50%;
+        background-color: $primary;
+        color: #fff;
+
+        position: absolute;
+        top: 1.5rem;
+        right: 1.3rem;
+
+        // so text in this element was not centered at this moment
+        // so flex property also works in TEXT
+        display: flex;
+        justify-content: center; // to center horizontally
+        align-items: center; // to center vertically
+    }
+
+    &__user {
+        display: flex;
+        align-items: center; // to center -- bcoz there will be a problem when we specied 100% height
+    }
+
+    &__user-photo {
+        height: 2rem;
+        border-radius: 50%;
+    }
+
+    &__user-name {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+//                                          NavList Ends
+
+// Header Is Ending Here
