@@ -49,7 +49,7 @@ const Comments = (props) => {
             setTwentyComments(data);
         };
         twentyComments();
-    }, [page]);
+    }, [page, replies]);
 
     //? This function is for SEO
     const head = () => (

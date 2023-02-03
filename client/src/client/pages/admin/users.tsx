@@ -115,10 +115,10 @@ const Users = ({ fetchCurrentUser, currentUser }) => {
     };
 
     return (
-        <div className="users-page" style={{ minHeight: '75vh' }}>
+        <div className="users-page" style={{ minHeight: '78vh' }}>
             {head()}
             <div
-                className="my-2 text-center"
+                className="my-4 text-center"
                 style={{
                     fontFamily: 'Bebas Neue',
                     fontSize: '50px',

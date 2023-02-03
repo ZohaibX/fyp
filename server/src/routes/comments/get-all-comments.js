@@ -16,6 +16,8 @@ require('dotenv').config(); //? to use dotenv file
 router.get('/api/comments/get-all-comments', async (req, res) => {
     const comments = await Comment.find();
 
+    console.log(comments.reverse());
+
     res.send(comments);
 });
 
@@ -35,7 +37,7 @@ router.get(
 
         console.log(page);
 
-        res.send(commentsArray);
+        res.send(commentsArray.reverse());
     }
 );
 

@@ -11,12 +11,12 @@ import store from './Store/store/index';
 import { Provider } from 'react-redux';
 
 ReactDom.hydrate(
-  <Provider store={store}>
-    <BrowserRouter>
-      <div>{renderRoutes(Routes)}</div>
-    </BrowserRouter>
-  </Provider>,
-  document.querySelector('#root')
+    <Provider store={store}>
+        <BrowserRouter>
+            <div>{renderRoutes(Routes)}</div>
+        </BrowserRouter>
+    </Provider>,
+    document.querySelector('#root')
 );
 
 // important to use hydrate here
